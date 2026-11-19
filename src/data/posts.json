@@ -1,0 +1,192 @@
+[
+  {
+    "id": 1,
+    "slug": "matin-sur-les-quais",
+    "title": "Un matin sur les quais",
+    "subtitle": "Brume, péniches et silence avant que la ville ne s'éveille",
+    "author": {
+      "name": "Claire Dubois",
+      "avatar": "https://i.pravatar.cc/100?img=47"
+    },
+    "date": "2026-10-21",
+    "image": "https://picsum.photos/seed/quais/800/450",
+    "tags": [
+      "ville",
+      "balade"
+    ],
+    "readingTime": 3,
+    "excerpt": "Avant que la ville ne s'éveille, les quais offrent un silence rare, fait de brume et de reflets.",
+    "content": "Il est six heures et demie, et la ville hésite encore entre la nuit et le jour. Sur les quais, la brume flotte au ras de l'eau, à peine troublée par le passage d'une péniche.\n\nLes premiers cyclistes passent sans un mot. Un pêcheur installe sa chaise pliante, toujours au même endroit, comme s'il avait signé un bail avec le fleuve.\n\nC'est l'heure où l'on entend les choses : le clapotis contre la pierre, le grincement d'une amarre, un café qui s'ouvre au loin. Une heure plus tard, tout cela aura disparu sous le bruit des voitures."
+  },
+  {
+    "id": 2,
+    "slug": "petit-guide-du-pain-maison",
+    "title": "Petit guide du pain maison",
+    "subtitle": "Quatre ingrédients, une nuit de repos et beaucoup de patience",
+    "author": {
+      "name": "Hugo Martin",
+      "avatar": "https://i.pravatar.cc/100?img=12"
+    },
+    "date": "2026-10-17",
+    "image": "https://picsum.photos/seed/pain/800/450",
+    "tags": [
+      "cuisine",
+      "fait-maison"
+    ],
+    "readingTime": 5,
+    "excerpt": "Farine, eau, sel et un peu de patience : faire son pain est plus simple qu'on ne le croit.",
+    "content": "On imagine souvent que le pain maison demande un savoir-faire de boulanger. En réalité, quatre ingrédients suffisent : de la farine, de l'eau, du sel et de la levure.\n\nLe secret tient surtout au temps. Une pâte qui pousse lentement, au frais, pendant une nuit, développe bien plus d'arômes qu'une pâte pressée.\n\nPour un premier essai, oubliez le pétrissage énergique. Mélangez simplement, couvrez, et laissez reposer douze heures. Façonnez, enfournez dans une cocotte bien chaude, et vous serez surpris du résultat."
+  },
+  {
+    "id": 3,
+    "slug": "pourquoi-j-ai-ralenti",
+    "title": "Pourquoi j'ai décidé de ralentir",
+    "subtitle": "Ce que j'ai gagné en arrêtant de courir après mon agenda",
+    "author": {
+      "name": "Sophie Lambert",
+      "avatar": "https://i.pravatar.cc/100?img=32"
+    },
+    "date": "2026-10-12",
+    "image": "https://picsum.photos/seed/ralentir/800/450",
+    "tags": [
+      "réflexion",
+      "quotidien"
+    ],
+    "readingTime": 4,
+    "excerpt": "Pendant des années, j'ai couru après mon agenda. Un jour, j'ai simplement arrêté de courir.",
+    "content": "Pendant longtemps, chaque journée ressemblait à une liste de tâches à cocher. Je finissais le soir épuisée, avec la sensation de n'avoir rien vécu.\n\nLe changement n'a pas été spectaculaire. J'ai d'abord supprimé les notifications de mon téléphone, puis j'ai réservé une heure par semaine à ne rien prévoir.\n\nCe temps vide, qui me faisait peur au début, est devenu le moment le plus précieux de ma semaine. Ralentir ne m'a pas rendue moins efficace : cela m'a rendue plus présente."
+  },
+  {
+    "id": 4,
+    "slug": "trois-jours-dans-les-ardennes",
+    "title": "Trois jours dans les Ardennes",
+    "subtitle": "Carnet de route d'un week-end prolongé entre forêts et rivières",
+    "author": {
+      "name": "Thomas Leroy",
+      "avatar": "https://i.pravatar.cc/100?img=15"
+    },
+    "date": "2026-10-08",
+    "image": "https://picsum.photos/seed/ardennes/800/450",
+    "tags": [
+      "voyage",
+      "nature"
+    ],
+    "readingTime": 6,
+    "excerpt": "Forêts profondes, rivières sinueuses et villages de pierre : récit d'un week-end prolongé loin de tout.",
+    "content": "Nous sommes partis un vendredi matin, sans programme précis, avec juste une carte et de bonnes chaussures.\n\nLe premier jour, nous avons suivi la rivière pendant des heures. Les méandres dessinent des boucles si serrées qu'on a parfois l'impression de revenir sur ses pas.\n\nLe deuxième jour, la pluie nous a surpris en pleine forêt. Abrités sous un vieux chêne, nous avons partagé un thermos de thé en écoutant l'averse. Le troisième jour, il a fallu rentrer, avec la promesse de revenir dès que possible."
+  },
+  {
+    "id": 5,
+    "slug": "cultiver-des-herbes-sur-son-balcon",
+    "title": "Cultiver des herbes sur son balcon",
+    "subtitle": "Des aromates frais toute la saison, même sans jardin",
+    "author": {
+      "name": "Claire Dubois",
+      "avatar": "https://i.pravatar.cc/100?img=47"
+    },
+    "date": "2026-10-03",
+    "image": "https://picsum.photos/seed/balcon/800/450",
+    "tags": [
+      "jardin",
+      "fait-maison"
+    ],
+    "readingTime": 4,
+    "excerpt": "Basilic, ciboulette, menthe : quelques pots suffisent pour avoir des herbes fraîches toute la saison.",
+    "content": "Pas besoin d'un jardin pour cultiver ses aromates. Un balcon, et même un rebord de fenêtre bien exposé, fait parfaitement l'affaire.\n\nCommencez par les plantes les plus faciles : la ciboulette et la menthe poussent presque seules. Le basilic demande plus de soleil et de chaleur, mais il récompense largement l'effort.\n\nL'erreur la plus fréquente est l'excès d'arrosage. Mieux vaut laisser la terre sécher légèrement entre deux arrosages que noyer les racines."
+  },
+  {
+    "id": 6,
+    "slug": "la-bibliotheque-de-mon-grand-pere",
+    "title": "La bibliothèque de mon grand-père",
+    "subtitle": "Des livres annotés au crayon et un homme à redécouvrir",
+    "author": {
+      "name": "Hugo Martin",
+      "avatar": "https://i.pravatar.cc/100?img=12"
+    },
+    "date": "2026-09-28",
+    "image": "https://picsum.photos/seed/bibliotheque/800/450",
+    "tags": [
+      "souvenirs",
+      "livres"
+    ],
+    "readingTime": 5,
+    "excerpt": "Des centaines de livres annotés au crayon, et dans chacun, un fragment de sa vie.",
+    "content": "Quand nous avons vidé sa maison, la bibliothèque a été la dernière pièce que personne n'osait toucher.\n\nChaque livre portait des annotations au crayon, d'une écriture fine et penchée. Parfois un simple point d'exclamation, parfois une phrase entière dans la marge.\n\nEn les lisant, j'ai découvert un homme que je connaissais mal : curieux, drôle, souvent en désaccord avec les auteurs. J'ai gardé une vingtaine de volumes. Je les relis lentement, comme une conversation qui continue."
+  },
+  {
+    "id": 7,
+    "slug": "debuter-la-photographie-argentique",
+    "title": "Débuter la photographie argentique",
+    "subtitle": "Trente-six poses pour apprendre à regarder autrement",
+    "author": {
+      "name": "Sophie Lambert",
+      "avatar": "https://i.pravatar.cc/100?img=32"
+    },
+    "date": "2026-09-22",
+    "image": "https://picsum.photos/seed/argentique/800/450",
+    "tags": [
+      "photo",
+      "loisirs"
+    ],
+    "readingTime": 6,
+    "excerpt": "Trente-six poses, aucun écran pour vérifier : l'argentique oblige à regarder autrement.",
+    "content": "Avec un appareil numérique, on photographie tout, sans compter. Avec une pellicule de trente-six poses, chaque déclenchement devient une décision.\n\nPour débuter, inutile d'investir beaucoup. Un appareil compact des années quatre-vingt-dix, trouvé en brocante, suffit largement.\n\nLe plus déroutant est l'attente. Entre la prise de vue et le développement, plusieurs semaines peuvent passer. Mais découvrir ses images longtemps après les avoir prises a quelque chose de magique."
+  },
+  {
+    "id": 8,
+    "slug": "soupe-de-potiron-a-la-chataigne",
+    "title": "Soupe de potiron à la châtaigne",
+    "subtitle": "Une recette douce et réconfortante pour les soirs d'automne",
+    "author": {
+      "name": "Thomas Leroy",
+      "avatar": "https://i.pravatar.cc/100?img=15"
+    },
+    "date": "2026-09-16",
+    "image": "https://picsum.photos/seed/potiron/800/450",
+    "tags": [
+      "cuisine",
+      "automne"
+    ],
+    "readingTime": 3,
+    "excerpt": "Une soupe douce et réconfortante, parfaite pour les premières soirées fraîches de l'automne.",
+    "content": "Dès que les journées raccourcissent, cette soupe revient sur ma table. Elle est simple, rapide et toujours appréciée.\n\nFaites revenir un oignon dans un peu de beurre, ajoutez le potiron coupé en cubes et une poignée de châtaignes cuites. Couvrez d'eau ou de bouillon et laissez mijoter vingt-cinq minutes.\n\nMixez finement, salez, poivrez, et ajoutez une touche de crème au moment de servir. Quelques châtaignes émiettées sur le dessus apportent du croquant."
+  },
+  {
+    "id": 9,
+    "slug": "travailler-depuis-un-cafe",
+    "title": "Travailler depuis un café : mode d'emploi",
+    "subtitle": "Quelques règles pour concilier concentration et savoir-vivre",
+    "author": {
+      "name": "Claire Dubois",
+      "avatar": "https://i.pravatar.cc/100?img=47"
+    },
+    "date": "2026-09-09",
+    "image": "https://picsum.photos/seed/cafe/800/450",
+    "tags": [
+      "travail",
+      "quotidien"
+    ],
+    "readingTime": 4,
+    "excerpt": "Bruit de fond, bonne lumière et un café chaud : quelques règles pour que ça reste agréable pour tout le monde.",
+    "content": "Travailler hors de chez soi aide parfois à retrouver de la concentration. Le léger brouhaha d'un café a un effet étonnamment apaisant.\n\nQuelques règles de savoir-vivre s'imposent pourtant. Consommer régulièrement, éviter les heures de pointe du déjeuner, et ne pas transformer une table pour quatre en bureau personnel.\n\nPrévoyez aussi un casque pour les appels. Vos voisins de table vous en seront reconnaissants, et vous serez moins distrait par les conversations alentour."
+  },
+  {
+    "id": 10,
+    "slug": "la-nuit-des-etoiles-filantes",
+    "title": "La nuit des étoiles filantes",
+    "subtitle": "Une nuit d'août, un champ isolé et le ciel tout entier",
+    "author": {
+      "name": "Hugo Martin",
+      "avatar": "https://i.pravatar.cc/100?img=12"
+    },
+    "date": "2026-08-13",
+    "image": "https://picsum.photos/seed/etoiles/800/450",
+    "tags": [
+      "nature",
+      "souvenirs"
+    ],
+    "readingTime": 3,
+    "excerpt": "Allongés dans un champ, loin des lumières de la ville, nous avons compté les étoiles filantes jusqu'à l'aube.",
+    "content": "Chaque année, à la mi-août, le ciel offre un spectacle que je ne manquerais pour rien au monde.\n\nCette fois, nous avions choisi un champ isolé, à une heure de route de toute lumière artificielle. Une couverture, des boissons chaudes, et le ciel entier pour nous.\n\nLes premières traînées sont apparues vers minuit. À trois heures, nous avions arrêté de compter. Nous sommes restés là, en silence, jusqu'à ce que le jour efface les dernières étoiles."
+  }
+]

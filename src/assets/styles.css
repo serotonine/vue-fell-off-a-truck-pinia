@@ -1,0 +1,136 @@
+@import './product.css';
+:root {
+  --color-base: dimgray;
+  --color-body: color-mix(in srgb, var(--color-base) 80%, black 20%);
+  --color-light: color-mix(in srgb, var(--color-base) 20%, white 80%);
+  --color-xlight: color-mix(in srgb, var(--color-base) 10%, white 90%);
+  --color-xxlight: color-mix(in srgb, var(--color-base) 5%, white 95%);
+  --color-xxxlight: color-mix(in srgb, var(--color-base) 2%, white 98%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: var(--color-body);
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h3 {
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+p {
+  max-width: 50ch;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-body);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+#app {
+  padding: 0 2em;
+}
+
+menu {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 1em;
+}
+
+/* Header */
+menu {
+  flex-grow: 1;
+}
+
+
+/* Utilities */
+.container {
+  container-type: inline-size;
+  container-name: container;
+}
+
+.flex {
+  display: flex;
+  gap: .5em;
+}
+
+.error {
+  color: crimson
+}
+
+.btn {
+  border-radius: 5px;
+  padding: 0.25em 0.5em;
+  border-width: 1px;
+  border-style: solid;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+
+  &.btn-tag {
+    border-color: orange;
+    background-color: orange;
+
+    &:hover,
+    &:focus {
+      border-color: darkorange;
+      background-color: darkorange;
+
+    }
+  }
+
+  &.btn-cta {
+    border-color: cornflowerblue;
+    background-color: color-mix(in srgb, cornflowerblue 80%, transparent 20%);
+
+    &:hover,
+    &:focus {
+      border-color: dodgerblue;
+      background-color: dodgerblue;
+
+    }
+  }
+
+  &.btn-reset {
+    border: none;
+    color: var(--color-body);
+    padding: 0;
+    background-color: transparent;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1em;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+
+}
+
+/* Form */
+.label {
+  display: block;
+  font-size: x-small;
+  margin-bottom: 0.5em;
+}
+
+/* Utilities */
+ul.reset {
+  margin: 0;
+  padding: 0;
+}

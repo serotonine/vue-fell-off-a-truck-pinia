@@ -37,3 +37,8 @@ __screenshots__/
 
 # Vite
 *.timestamp-*-*.mjs
+
+# node_module
+node_module
+# Generated files
+package-lock.json
