@@ -1,15 +1,23 @@
 <script setup>
-import { onMounted , useRouter} from "vue";
+import { onMounted, watch } from "vue";
+import { useRouter } from "vue-router";
 import { useCartStore, euroFormat } from "@/stores/cart.store";
 import { storeToRefs } from "pinia";
 import BaseCartItem from "./BaseCartItem.vue";
 const cart = useCartStore();
 const router = useRouter();
-const {total, nbProducts} = storeToRefs(useCartStore());
+const { total, nbProducts } = storeToRefs(useCartStore());
+/* If cart is empty or become empty */
 onMounted(() => {
-  nbProducts === 0 ?? router.replace({name:'products-route'});
-
-})
+  if (nbProducts.value === 0) {
+    router.replace({ name: "products-route" });
+  }
+});
+watch(nbProducts, (current)=>{
+   if (current === 0) {
+    router.replace({ name: "products-route" });
+  }
+});
 </script>
 
 <template>
@@ -30,7 +38,7 @@ onMounted(() => {
 </template>
 <style>
 .cart_total {
-  display:flex;
+  display: flex;
   justify-content: space-between;
   margin-top: 1em;
 }

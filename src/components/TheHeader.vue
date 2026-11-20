@@ -33,7 +33,7 @@
           <Heart aria-hidden="true"></Heart>
         </router-link>
       </li>
-      <li><router-link :to="{ name: 'blog-route' }">Blog</router-link></li>
+     
      <!--  Login-logout -->
         <li v-if="!auth.isAuthenticated">
         <router-link  :to="{ name: 'login-route' }">Login</router-link>
@@ -46,6 +46,8 @@
         }"
         >Posts</router-link
       ></li> -->
+      <!-- Blog -->
+       <li><router-link :to="{ name: 'blog-route' }">Blog</router-link></li>
     </menu>
   </header>
 </template>

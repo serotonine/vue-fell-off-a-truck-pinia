@@ -36,7 +36,7 @@ export const useProductStore = defineStore("product", () => {
       const data = await response.json();
       products.value = getProducts(data?.products);
       setCategories(data?.products);
-      console.log(categories.value);
+      // console.log(categories.value);
     } catch (err) {
       error.value = err.message;
     } finally {
@@ -59,7 +59,7 @@ export const useProductDetailStore = defineStore("productDetail", () => {
         throw new Error(response.status);
       }
       const data = await response.json();
-      /* console.log("data", data); */
+      // console.log("data", data);
       product.value = data;
     } catch (err) {
       error.value = err.message;

@@ -4,6 +4,7 @@ import { ref } from "vue";
 // COMPOSITION API //
 export const useFavoriteStore = defineStore("favorite", () => {
   // State.
+  /** @type {Ref<Map<number, Product>>} */
   const favorites = ref(new Map());
   // Getters.
   const isFavorite = (product) => favorites.value.has(product.id);

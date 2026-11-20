@@ -18,10 +18,10 @@ export const useCartStore = defineStore("cart", {
   }),
   getters: {
     total: (state) => {
-      return state.products.reduce((acc, product) => acc + product.subtotal, 0);
+      return state.products.reduce((acc, product) => acc + product?.subtotal, 0);
     },
     nbProducts: (state) => {
-      return state.products.reduce((acc, product) => acc + product.qty, 0);
+      return state.products.reduce((acc, product) => acc + product?.qty, 0);
     },
   },
   actions: {

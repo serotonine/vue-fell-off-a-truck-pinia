@@ -15,7 +15,8 @@ router.beforeEach((to,from)=>{
   if(to.meta.requireAuth){
     const authStore = useAuthStore();
     if(!authStore.isAuthenticated){
-      return {name:'login-route'}
+      /* If anonymous redirect to login page then redirect to page Source (cart, favorite). */
+       return { name: 'login-route', query: { redirect: to.fullPath } }
     }
   }
 });
