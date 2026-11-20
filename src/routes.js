@@ -19,23 +19,24 @@ function redirectAuth() {
 }
 
 export const routes = [
+  // Redirect example.
+  /* 
+   * With 'redirect' the url change
+   * that is the case with 'alias'
+  **/
   {
-    path: "/cart",
+    path: "/basket",
     component: TheCart,
     name: "cart-route",
-    /*  beforeEnter: [redirectAuth], */
-    /*  beforeEnter:(to,from)=> {
-      const authStore = useAuthStore();
-      if(!authStore.isAuthenticated){
-        return {name:'login-route'}
-      }
-
-    } */
-    /*
-     * Other Guard way.
-     */
     meta: { requireAuth: true },
   },
+
+  {
+    path: "/cart",
+    /* redirect: (to) => "/basket" */
+    redirect: {name:'basket'}
+  },
+  // End redirect.
   {
     path: "/login",
     component: BaseLogin,
