@@ -1,4 +1,11 @@
-# 01-vue-store
+# Fell off a truck
+## The purpose of this app is to use Pinia and the router
+-  See 
+- Vue.js app
+- Pinia + router + Vue ^3
+- lucide icons
+- dummy data from https://dummyjson.com/
+
 
 This template should help get you started developing with Vue 3 in Vite.
 

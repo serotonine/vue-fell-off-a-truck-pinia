@@ -25,6 +25,7 @@ const log = () => {
 };
 </script>
 <template>
+  <h3>You need to be authentified to access your cart and favorites.</h3>
   <form @submit.prevent="log">
     <fieldset>
       <legend>Authentification</legend>

@@ -13,13 +13,16 @@ export const usePostStore = defineStore("post", {
     error: null,
     isLoading: false,
     posts: null,
+    tags :new Set(),
   }),
   actions: {
+    setTagList(data){
+      data.forEach((post) => { post.tags.foreach((tag) => this.tags.add(tag))});
+    },
     async loadPosts(query, tag=null) {
       this.error = null;
       this.isLoading = true;
       const params = new URLSearchParams(query);
-      console.log(tag);
       const url = tag ? `${POSTS_URL}/tag/${tag}?${params}`: `${POSTS_URL}?${params}`;
       try {
         const response = await fetch(url);
@@ -28,6 +31,8 @@ export const usePostStore = defineStore("post", {
         }
         const data = await response.json();
         this.posts = data.posts;
+        this.setTagList(data.posts);
+        console.log("tags", this.tags);
       } catch (err) {
         this.error = err.message;
       } finally {

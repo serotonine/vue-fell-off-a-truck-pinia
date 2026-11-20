@@ -11,7 +11,7 @@ export const euroFormat = new Intl.NumberFormat("fr-BE", {
  * functions => actions.
  * Must return everything.
  */
-// COMPOSITION API //
+// OPTION API //
 export const useCartStore = defineStore("cart", {
   state: () => ({
     products: [],

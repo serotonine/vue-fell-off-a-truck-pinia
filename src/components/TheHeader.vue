@@ -3,7 +3,7 @@
   import { useAuthStore } from "@/stores/auth.store";
   import { useCartStore } from "@/stores/cart.store";
   import { useFavoriteStore } from "@/stores/favorite.store";
-  import { ShoppingCart , Heart  } from "@lucide/vue";
+  import { ShoppingCart , Heart, HandTruck  } from "@lucide/vue";
   const auth = useAuthStore();
   const cart = useCartStore();
   const {favorites} = useFavoriteStore();
@@ -16,6 +16,7 @@
 
 <template>
   <header class="header">
+    <HandTruck></HandTruck>
     <h1>Fell off a truck</h1>
     <menu aria-label="menu">
       <li>

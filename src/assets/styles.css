@@ -1,3 +1,4 @@
+@import './font.css';
 @import './product.css';
 :root {
   --color-base: dimgray;
@@ -13,7 +14,7 @@
 }
 
 body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Inter', sans-serif;
   color: var(--color-body);
 }
 
@@ -111,7 +112,7 @@ menu {
     color: var(--color-body);
     padding: 0;
     background-color: transparent;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 1em;
 
     &:hover,

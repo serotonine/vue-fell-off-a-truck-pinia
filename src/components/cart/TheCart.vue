@@ -1,9 +1,15 @@
 <script setup>
+import { onMounted , useRouter} from "vue";
 import { useCartStore, euroFormat } from "@/stores/cart.store";
 import { storeToRefs } from "pinia";
 import BaseCartItem from "./BaseCartItem.vue";
 const cart = useCartStore();
-const {total} = storeToRefs(useCartStore());
+const router = useRouter();
+const {total, nbProducts} = storeToRefs(useCartStore());
+onMounted(() => {
+  nbProducts === 0 ?? router.replace({name:'products-route'});
+
+})
 </script>
 
 <template>
