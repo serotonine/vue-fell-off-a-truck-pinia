@@ -8,10 +8,14 @@
   const cart = useCartStore();
   const {favorites} = useFavoriteStore();
   const router = useRouter();
+
   const logout = ()=>{
     auth.logout();
     router.push({name:'products-route'});
   }
+    const isProductActive = computed(() =>
+  ['products-route', 'product-detail'].includes(route.name)
+);
 </script>
 
 <template>

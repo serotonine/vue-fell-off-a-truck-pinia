@@ -10,17 +10,22 @@ export default {
       store: useBlogStore(),
     };
   },
-
+  computed: {
+    tagParam() {
+      return this.$route.params?.tag ? this.$route.params.tag : null;
+    },
+  },
   beforeRouteEnter(to, _from) {
-    return (vm) => vm.store.loadPosts(to.query, to.params.tagId);
+    return (vm) => vm.store.loadPosts(null, to.params.tag);
   },
   beforeRouteUpdate(to) {
-    this.store.loadPosts(to.query, to.params.tagId);
+    this.store.loadPosts(null, to.params.tag);
   },
 };
 </script>
 
 <template>
+  <h2 v-if="tagParam">Tag: {{ tagParam }}</h2>
   <div class="wrapper_content">
     <div class="loader">
       <BaseLoader
@@ -46,7 +51,6 @@ export default {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
 .post {
  padding: 0 1em;
     border: 1px solid lightgray;

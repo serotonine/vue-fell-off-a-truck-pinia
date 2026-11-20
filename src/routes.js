@@ -65,10 +65,9 @@ export const routes = [
     name: "favorites-route",
     meta: { requireAuth: true },
   },
- {
-    path: "/blog",
+  {
+    path: "/blog/:tag?",
     component: Blog,
     name: "blog-route",
   },
-
 ];

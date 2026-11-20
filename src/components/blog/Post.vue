@@ -1,22 +1,13 @@
 <script setup>
+import Tag from './BasePostTag.vue';
 const props = defineProps({ post: { type: Object, required: true } });
 </script>
 <template>
   <article>
     <header>
-      <div class="posts_tags">
+      <div class="post_tags">
 
-       <!--  <router-link
-          v-for="tag in post.tags"
-          :key="`${post.id}_${tag}`"
-          :to="{
-            name: 'posts-tag-route',
-            params:{tagId:tag},
-            query: { limit: 15, sortBy: 'views', order: 'desc' },
-          }"
-          class="btn btn-tag"
-          >{{ tag }}</router-link
-        > -->
+<Tag v-for="tag in post.tags" :key="`${post.id}_${tag}`" :tag="tag" bgColor="orange"></tag>
       </div>
       <h3>{{ post.title }}</h3>
     </header>
@@ -30,10 +21,10 @@ const props = defineProps({ post: { type: Object, required: true } });
   </article>
 </template>
 <style scoped>
-.posts_tags {
+.post_tags {
   display: flex;
-  gap: 0.25em;
-  margin-bottom: 1em;
+  gap: 0.5em;
+  margin: 1em 0;
 }
 footer {
   margin-bottom: 1em;
