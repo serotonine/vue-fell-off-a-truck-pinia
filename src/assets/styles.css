@@ -1,5 +1,6 @@
 @import './font.css';
 @import './product.css';
+
 :root {
   --color-base: dimgray;
   --color-body: color-mix(in srgb, var(--color-base) 80%, black 20%);
@@ -30,6 +31,7 @@ h3 {
 
 p {
   max-width: 50ch;
+  font-size: clamp(0.85rem, 1.053rem - 0.225vw, 1rem);
 }
 
 a {
@@ -59,6 +61,20 @@ menu {
 
 
 /* Utilities */
+.wrapper_content {
+  position: relative;
+  min-height: 50dvh;
+}
+
+.loader {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  inset: 50%;
+  transform-origin: center;
+  animation: turn 0.5s linear infinite;
+}
+
 .container {
   container-type: inline-size;
   container-name: container;

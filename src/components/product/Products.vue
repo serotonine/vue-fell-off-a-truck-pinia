@@ -20,7 +20,7 @@ onMounted(() => {
 
 <template>
   <h2>Products</h2>
-  <section class="products_content">
+  <section class="wrapper_content">
     <div class="loader"><base-loader :error="error" :is-loading="isLoading" /></div>
     <ProductsByCategory v-if="products?.length"></ProductsByCategory>
     <transition name="product" appear>
@@ -36,19 +36,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.products_content{
-  position:relative;
-  min-height: 50dvh;
-  
-}
-.loader{
-  position: absolute;
-  width:60px;
-  height: 60px;
-  inset: 50%;
-  transform-origin: center;
-  animation: turn 0.5s linear infinite;
-}
+
 .product-enter-active,
 .product-leave-active {
   transition: opacity 0.5s ease-out;

@@ -5,10 +5,8 @@ const props = defineProps({ post: { type: Object, required: true } });
   <article>
     <header>
       <div class="posts_tags">
-       <!--  <button v-for="tag in post.tags" :key="`${post.id}_${tag}`">
-          {{ tag }}
-        </button> -->
-        <router-link
+
+       <!--  <router-link
           v-for="tag in post.tags"
           :key="`${post.id}_${tag}`"
           :to="{
@@ -18,7 +16,7 @@ const props = defineProps({ post: { type: Object, required: true } });
           }"
           class="btn btn-tag"
           >{{ tag }}</router-link
-        >
+        > -->
       </div>
       <h3>{{ post.title }}</h3>
     </header>

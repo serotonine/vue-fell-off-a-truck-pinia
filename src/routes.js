@@ -3,9 +3,7 @@ import { useAuthStore } from "./stores/auth.store";
 // Components.
 import ProductDetail from "@/components/product/ProductDetail.vue";
 import Products from "@/components/product/Products.vue";
-import Posts from "@/components/Posts.vue";
-import TheBlog from "@/components/blog/TheBlog.vue";
-import BaseBlog from "@/components/blog/BaseBlog.vue";
+import Blog from "@/components/blog/TheBlog.vue";
 import TheCart from "@/components/cart/TheCart.vue";
 import BaseLogin from "@/components/auth/BaseLogin.vue";
 import Favorites from "./components/product/Favorites.vue";
@@ -48,16 +46,7 @@ export const routes = [
       }
     },
   },
-  {
-    path: "/posts",
-    component: Posts,
-    name: "posts-route",
-  },
-  {
-    path: "/posts/:tagId",
-    component: Posts,
-    name: "posts-tag-route",
-  },
+  
   {
     path: "/products",
     alias: "/",
@@ -76,18 +65,10 @@ export const routes = [
     name: "favorites-route",
     meta: { requireAuth: true },
   },
-  {
+ {
     path: "/blog",
-    component: TheBlog,
+    component: Blog,
     name: "blog-route",
   },
-  {
-    path: "/blog/:postId(\\d+)",
-    component: BaseBlog,
-    name: "blog-detail-route",
-    props: (route) => ({
-      postId: Number(route.params.postId),
-      complete: true,
-    }),
-  },
+
 ];
