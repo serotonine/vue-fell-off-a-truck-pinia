@@ -13,9 +13,7 @@
     auth.logout();
     router.push({name:'products-route'});
   }
-    const isProductActive = computed(() =>
-  ['products-route', 'product-detail'].includes(route.name)
-);
+
 </script>
 
 <template>
@@ -24,7 +22,7 @@
     <h1>Fell off a truck</h1>
     <menu aria-label="menu">
       <li>
-        <router-link :to="{ name: 'products-route' }">Products</router-link>
+        <router-link :to="{ name: 'products-route' }" :class="{'router-link-active': ['product-detail'].includes($route.name)}">Products</router-link>
       </li>
       <li class="link_cart">
         <div v-if="!!cart.nbProducts" class="link_cart_qty"><span>{{ cart.nbProducts }}</span></div>
