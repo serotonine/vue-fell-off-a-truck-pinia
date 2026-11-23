@@ -1,18 +1,20 @@
 <script setup>
+import { AUTH_ROLES } from "@/config";
+import { capitalize } from "@/utils/utils";
 import { ref } from "vue";
 import { useAuthStore } from "@/stores/auth.store";
 import { useRouter } from "vue-router";
 const auth = useAuthStore();
 const router = useRouter();
-const username = ref("");
+const role = ref(null);
 const error = ref("");
 
 // Login.
 const log = () => {
-  if (username.value) {
+  if (role.value) {
     
     // AuthStore.
-    auth.login(username.value);
+    auth.login(role.value);
     
     /* Handle case of direct access to /login */
     // router.back() => Same as router.go(-1);
@@ -20,30 +22,22 @@ const log = () => {
     
   } else {
     // Output in template.
-    error.value = "Error : check your input";
+    error.value = "Error...";
   }
 };
 </script>
 <template>
   <h3>You need to be authentified to access your cart and favorites.</h3>
-  <form @submit.prevent="log">
+  <!-- <form @submit.prevent="log"> -->
     <fieldset>
       <legend>Authentification</legend>
-      <label>
-        <span class="label">Username</span>
-        <input
-          type="text"
-          required
-          placeholder="username"
-          name="username"
-          autocomplete="username"
-          v-model.trim="username"
-        />
-      </label>
-      <button type="submit" class="btn btn-cta">Login</button>
+      <select name="selectRole"  v-model.="role" @change="log">
+        <option :value="null">Choose a role</option>
+        <option v-for="role in AUTH_ROLES" :key="role" :value="role">{{ capitalize(role) }}</option>
+      </select>
     </fieldset>
     <output>{{ error }}</output>
-  </form>
+  <!-- </form> -->
 </template>
 
 <style scoped>

@@ -1,8 +1,10 @@
 <script setup>
-  import TheHeader from "./components/TheHeader.vue";
+import TheHeader from "./components/TheHeader.vue";
 </script>
 
 <template>
   <the-header></the-header>
-  <router-view></router-view>
+  <main>
+    <router-view></router-view>
+  </main>
 </template>

@@ -1,22 +1,28 @@
 <script setup>
-import Tag from './BasePostTag.vue';
-const props = defineProps({ post: { type: Object, required: true } });
+import { useAuthStore } from '@/stores/auth.store.js';
+import { useBlogStore } from '@/stores/blog.store.js';
+import CloseBtn from '@/components/buttons/BaseCloseBtn.vue';
+import EditBtn from '@/components/buttons/BaseEditBtn.vue';
+import Tag from '@/components/blog/BasePostTag.vue';
+const props = defineProps({ 
+  post: { type: Object, required: true }});
+const { user } = useAuthStore();
+const { removePost } = useBlogStore();
 </script>
 <template>
   <article>
     <header>
       <div class="post_tags">
 
-<Tag v-for="tag in post.tags" :key="`${post.id}_${tag}`" :tag="tag" bgColor="orange"></tag>
+<Tag v-for="tag in post.tags.sort()" :key="`${post.id}_${tag}`" :tag="tag" bgColor="orange"></tag>
       </div>
       <h3>{{ post.title }}</h3>
     </header>
-    <main>
       <p>{{ post.body }}</p>
-    </main>
-    <footer>
-      <span>Views : {{ post.views }}</span>
-      <span> </span>
+      <p><small>{{ post.views }} views</small></p>
+    <footer v-if="user && user.role ==='editor'" class="flex">
+     <close-btn @click="removePost(post.id)" :trash="true"></close-btn>    
+     <router-link :to="{name:'blog-edit-post', params:{postId: post.id}} "><edit-btn></edit-btn></router-link>    
     </footer>
   </article>
 </template>
@@ -27,6 +33,7 @@ const props = defineProps({ post: { type: Object, required: true } });
   margin: 1em 0;
 }
 footer {
+  
   margin-bottom: 1em;
 }
 </style>

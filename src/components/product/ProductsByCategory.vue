@@ -2,13 +2,11 @@
 import { ref } from "vue";
 import { useProductStore } from "@/stores/product.store";
 import { storeToRefs } from "pinia";
+import { capitalize } from "@/utils/utils";
 const productStore = useProductStore();
 const { categories } = storeToRefs(productStore);
-
 const categoriesSelect = ref(null);
-// Utils.
-const capitalize = (str) =>
-  str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+
 // Event.
 const sortProducts = () => productStore.loadProducts(categoriesSelect.value);
 </script>

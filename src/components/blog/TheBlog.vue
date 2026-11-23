@@ -12,14 +12,18 @@ export default {
   },
   computed: {
     tagParam() {
-      return this.$route.params?.tag ? this.$route.params.tag : null;
+      return this.$route.params?.tag ?? null;
     },
   },
+  /*
+   * to CRUD we need to store the posts
+   * see https://www.udemy.com/course/maitrisez-vue-router-et-pinia/learn/lecture/47586881#overview
+   **/
   beforeRouteEnter(to, _from) {
-    return (vm) => vm.store.loadPosts(null, to.params.tag);
+    return (vm) => vm.store.getPosts(null, to.params.tag);
   },
   beforeRouteUpdate(to) {
-    this.store.loadPosts(null, to.params.tag);
+    this.store.getPosts(null, to.params.tag);
   },
 };
 </script>
@@ -42,6 +46,7 @@ export default {
       ></Post>
     </section>
   </div>
+  <router-view></router-view>
 </template>
 <style scoped>
 @media screen and (min-width: 645px) {

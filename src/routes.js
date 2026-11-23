@@ -4,9 +4,10 @@ import { useAuthStore } from "./stores/auth.store";
 import ProductDetail from "@/components/product/ProductDetail.vue";
 import Products from "@/components/product/Products.vue";
 import Blog from "@/components/blog/TheBlog.vue";
+import TheBlogEdit from "@/components/blog/TheBlogEdit.vue";
 import TheCart from "@/components/cart/TheCart.vue";
 import BaseLogin from "@/components/auth/BaseLogin.vue";
-import Favorites from "./components/product/Favorites.vue";
+import Favorites from "@/components/product/Favorites.vue";
 
 // External function to redirect to login if not authentificated.
 function redirectAuth() {
@@ -18,10 +19,10 @@ function redirectAuth() {
 
 export const routes = [
   // Redirect example.
-  /* 
+  /*
    * With 'redirect' the url change
    * that is the case with 'alias'
-  **/
+   **/
   {
     path: "/basket",
     component: TheCart,
@@ -32,7 +33,7 @@ export const routes = [
   {
     path: "/cart",
     /* redirect: (to) => "/basket" */
-    redirect: {name:'basket'}
+    redirect: { name: "basket" },
   },
   // End redirect.
   {
@@ -46,7 +47,7 @@ export const routes = [
       }
     },
   },
-  
+
   {
     path: "/products",
     alias: "/",
@@ -59,7 +60,7 @@ export const routes = [
     name: "product-detail",
     props: true,
   },
-   {
+  {
     path: "/favorites",
     component: Favorites,
     name: "favorites-route",
@@ -69,5 +70,8 @@ export const routes = [
     path: "/blog/:tag?",
     component: Blog,
     name: "blog-route",
+    children: [
+      { path: "edit/:postId", name: "blog-edit-post", props:true, component: TheBlogEdit,  meta: { requireAuth: true, roles:['editor'] } },
+    ],
   },
 ];

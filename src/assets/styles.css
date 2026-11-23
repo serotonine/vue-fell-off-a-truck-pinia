@@ -52,13 +52,12 @@ menu {
   align-items: center;
   justify-content: end;
   gap: 1em;
-}
-
-/* Header */
-menu {
   flex-grow: 1;
 }
 
+main {
+  position: relative;
+}
 
 /* Utilities */
 .wrapper_content {

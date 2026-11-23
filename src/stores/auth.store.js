@@ -20,7 +20,7 @@ export const useAuthStore = defineStore("auth", () => {
   const login = (username) => {
     user.value = {
       name: username,
-      role: "authenticated",
+      role: username,
     };
   };
 

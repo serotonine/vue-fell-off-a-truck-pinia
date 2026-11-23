@@ -41,10 +41,10 @@ function addProduct(e) {
           <i>{{ product.brand }}</i>
         </h5>
       </header>
-      <main>
+      <section>
         <p>{{ product.description }}</p>
         <h3>{{ euroFormat.format(product.price) }}</h3>
-      </main>
+      </section>
       <footer>
         <button class="btn btn-cta" @click="addProduct($event)">
           Add to cart
