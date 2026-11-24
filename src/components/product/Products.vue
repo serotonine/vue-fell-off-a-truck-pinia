@@ -19,10 +19,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <h2>Products</h2>
+  
   <section class="wrapper_content">
     <div class="loader"><base-loader :error="error" :is-loading="isLoading" /></div>
-    <ProductsByCategory v-if="products?.length"></ProductsByCategory>
+   
+    <div class="header">
+       <h2>Products</h2>
+      <ProductsByCategory v-if="products?.length"></ProductsByCategory>
+    </div>
     <transition name="product" appear>
       <section v-if="products?.length" class="products_grid">
         <Product
@@ -36,6 +40,11 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.header{
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .product-enter-active,
 .product-leave-active {

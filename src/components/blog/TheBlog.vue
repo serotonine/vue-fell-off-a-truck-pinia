@@ -38,8 +38,10 @@ export default {
 
 <template>
   <header class="blog_header">
+   
     <h2>
-      <span v-if="tagParam">Tag: {{ tagParam }}</span>
+      <router-link :to="{name: 'blog-route', params:null}">Blog</router-link>
+      <span v-if="tagParam"> / {{ tagParam }}</span>
     </h2>
     <router-link
       v-if="authStore.user"

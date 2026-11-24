@@ -16,7 +16,7 @@ const { removePost } = useBlogStore();
 
 <Tag v-for="tag in post.tags.sort()" :key="`${post.id}_${tag}`" :tag="tag" bgColor="orange"></tag>
       </div>
-      <h3>{{post.id}} : {{ post.title }}</h3>
+      <h3>{{ post.id }} : {{ post.title }}</h3>
     </header>
       <p>{{ post.body }}</p>
       <p><small>{{ post.views }} views</small></p>
@@ -33,7 +33,6 @@ const { removePost } = useBlogStore();
   margin: 1em 0;
 }
 footer {
-  
   margin-bottom: 1em;
 }
 </style>

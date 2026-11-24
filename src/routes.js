@@ -47,19 +47,21 @@ export const routes = [
       }
     },
   },
-
+  // A good way to set the "/products" class "router-link-active"
   {
     path: "/products",
     alias: "/",
-    component: Products,
-    name: "products-route",
+    children: [
+      { path: "", component: Products, name: "products-route" },
+      {
+        path: "product/:productId(\\d+)",
+        component: ProductDetail,
+        name: "product-detail",
+        props: true,
+      },
+    ],
   },
-  {
-    path: "/product/:productId(\\d+)",
-    component: ProductDetail,
-    name: "product-detail",
-    props: true,
-  },
+
   {
     path: "/favorites",
     component: Favorites,
@@ -71,8 +73,19 @@ export const routes = [
     component: Blog,
     name: "blog-route",
     children: [
-      { path: "edit/:postId", name: "blog-edit-post", props:true, component: TheBlogEdit,  meta: { requireAuth: true, roles:['editor'] } },
-      { path: "add", name: "blog-add-post", component: TheBlogEdit,  meta: { requireAuth: true, roles:['editor'] } },
+      {
+        path: "edit/:postId",
+        name: "blog-edit-post",
+        props: true,
+        component: TheBlogEdit,
+        meta: { requireAuth: true, roles: ["editor"] },
+      },
+      {
+        path: "add",
+        name: "blog-add-post",
+        component: TheBlogEdit,
+        meta: { requireAuth: true, roles: ["editor"] },
+      },
     ],
   },
 ];

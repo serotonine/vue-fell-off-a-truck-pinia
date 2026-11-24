@@ -27,6 +27,8 @@ function addProduct(e) {
 </script>
 
 <template>
+    <h2>Products</h2>
+
   <base-loader :error="error" :is-loading="isLoading" />
   <section v-if="product" class="product-detail">
     <article class="product-detail_thumbnail">
