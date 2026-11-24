@@ -52,15 +52,23 @@ export const useBlogStore = defineStore("blog", {
       }
     },
     /* POSTS */
-    // Retrieve backend alike posts.
+    // Retrieve from alike backend posts.
     getSessionPosts() {
       return JSON.parse(sessionStorage.getItem("blogPosts"));
+    },
+    getNewPostId() {
+      let id = this.getSessionPosts().reduce(
+        (acc, curr) => Math.max(acc, Number(curr.id)),
+        0,
+      );
+      return ++id;
     },
 
     // Function called on component to retrieve the posts.
     async getPosts(query = null, tag = null) {
       if (!this.getSessionPosts()) {
-        await this.loadPosts();
+        // loadPosts() => set sessionStorage.
+        await this.loadPosts(query);
       }
       let posts = this.getSessionPosts();
       if (!posts) {
@@ -101,23 +109,55 @@ export const useBlogStore = defineStore("blog", {
     // CRUD => Remove post.
     removePost(postId) {
       // Remove in storage.
-      const posts = this.getSessionPosts().filter((post) => post.id !== postId);
+      const posts = this.getSessionPosts().filter((post) => post.id != postId);
       sessionStorage.setItem("blogPosts", JSON.stringify(posts));
-      // Remove in state (skip the tagParam issue).
-      this.posts = this.posts.filter((post) => post.id !== postId);
+      // Remove in state.
+      this.posts = this.posts.filter((post) => post.id != postId);
     },
     // CRUD => Patch post.
-    updatePost(postId, updatedPost) {
-      // Update in storage.
-      const posts = this.getSessionPosts().map((post) =>
-        post.id == postId ? updatedPost : post,
-      );
+    updateCreatePost(postId, newPost, tag = null) {
+      
+      // newPost.id exists ? update : create.
+      const isPost = !!this.getPostById(postId);
+      // Output to be set in SessionStorage.
+      let posts;
 
+      /*
+       * UPDATE POST
+       **/
+      if (isPost) {
+        // Update in storage.
+        posts = this.getSessionPosts().map((post) =>
+          post.id == postId ? newPost : post,
+        );
+        // Update in state.
+        // Tag or not tag. this.posts  care that.
+        this.posts = this.posts.map((post) =>
+          post.id == postId ? newPost : post,
+        );
+        // If we are on tag page and the newPost is not tagged anymore.
+        if (tag && !newPost.tags.includes(tag)) {
+          this.posts = this.posts.filter((post) => post.id != postId);
+        }
+      }
+      /*
+       * CREATE POST
+       **/
+      else {
+        // Update Sessionstorage.
+        posts = this.getSessionPosts();
+        posts.unshift(newPost);
+        // Update in State.
+        if (!tag) {
+          this.posts = [...posts];
+        }
+        // We are on a tag page and the newPost is tagged with this tag.
+        else if (newPost.tags.includes(tag)) {
+          this.posts.unshift(newPost);
+        }
+      }
+      // Update alike backend.
       sessionStorage.setItem("blogPosts", JSON.stringify(posts));
-      // Update in state (skip the tagParam issue).
-      this.posts = this.posts.map((post) =>
-        post.id == postId ? updatedPost : post,
-      );
     },
   },
 });

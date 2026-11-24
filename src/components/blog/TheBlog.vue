@@ -1,5 +1,7 @@
 <script>
+import { mapStores } from "pinia";
 import { useBlogStore } from "@/stores/blog.store.js";
+import { useAuthStore } from "@/stores/auth.store.js";
 import Post from "@/components/blog/Post.vue";
 import BaseLoader from "@/components/BaseLoader.vue";
 
@@ -7,39 +9,55 @@ export default {
   components: { Post, BaseLoader },
   data() {
     return {
-      store: useBlogStore(),
+      /*  store: useBlogStore(), */
+      user: useAuthStore().user,
     };
   },
   computed: {
     tagParam() {
       return this.$route.params?.tag ?? null;
     },
+    //  Return a computed with name store's id (defineStore("blog", …))  +  'Store', =>  blogStore.
+    ...mapStores(useBlogStore, useAuthStore),
   },
   /*
    * to CRUD we need to store the posts
    * see https://www.udemy.com/course/maitrisez-vue-router-et-pinia/learn/lecture/47586881#overview
    **/
-  beforeRouteEnter(to, _from) {
-    return (vm) => vm.store.getPosts(null, to.params.tag);
-  },
-  beforeRouteUpdate(to) {
-    this.store.getPosts(null, to.params.tag);
+  watch: {
+    tagParam: {
+      handler() {
+        console.log(this.blogStore.getNewPostId());
+        this.blogStore.getPosts({ sortBy: "id", order: "desc" }, this.tagParam);
+      },
+      immediate: true,
+    },
   },
 };
 </script>
 
 <template>
-  <h2 v-if="tagParam">Tag: {{ tagParam }}</h2>
+  <header class="blog_header">
+    <h2>
+      <span v-if="tagParam">Tag: {{ tagParam }}</span>
+    </h2>
+    <router-link
+      v-if="authStore.user"
+      :to="{ name: 'blog-add-post' }"
+      class="btn btn-cta"
+      >Create post</router-link
+    >
+  </header>
   <div class="wrapper_content">
     <div class="loader">
       <BaseLoader
-        :error="store.error"
-        :isLoading="store.isLoading"
+        :error="blogStore.error"
+        :isLoading="blogStore.isLoading"
       ></BaseLoader>
     </div>
-    <section class="wrapper" v-if="store.posts">
+    <section class="wrapper" v-if="blogStore.posts">
       <Post
-        v-for="post in store.posts"
+        v-for="post in blogStore.posts"
         :key="post.id"
         :post="post"
         class="post"
@@ -49,6 +67,15 @@ export default {
   <router-view></router-view>
 </template>
 <style scoped>
+.blog_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  h2 {
+    margin-bottom: 0;
+  }
+}
 @media screen and (min-width: 645px) {
   .wrapper {
     display: grid;
@@ -57,8 +84,8 @@ export default {
   }
 }
 .post {
- padding: 0 1em;
-    border: 1px solid lightgray;
-    border-radius: 0.5rem;
+  padding: 0 1em;
+  border: 1px solid lightgray;
+  border-radius: 0.5rem;
 }
 </style>

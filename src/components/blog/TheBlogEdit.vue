@@ -1,7 +1,7 @@
 <script setup>
 import { ref, useTemplateRef, onMounted, computed } from "vue";
 import { useBlogStore } from "@/stores/blog.store";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import CloseBtn from "../buttons/BaseCloseBtn.vue";
 import { ThumbsUp, ThumbsDown } from "@lucide/vue";
 
@@ -12,7 +12,7 @@ import { ThumbsUp, ThumbsDown } from "@lucide/vue";
  **/
 
 const props = defineProps({
-  postId: { type: String, required: true },
+  postId: { type: String, required: false },
 });
 /*
  * Very practical !
@@ -24,10 +24,11 @@ defineOptions({ inheritAttrs: false });
 
 const blogStore = useBlogStore();
 const dialog = useTemplateRef("dialog");
+const route = useRoute();
 const router = useRouter();
-const post = ref(blogStore.getPostById(props.postId));
+const post = ref(props.postId ? blogStore.getPostById(props.postId): null);
 const error = ref(null);
-const blogTags = computed(() => [...blogStore.tagsColor.keys()]);
+const blogTags = computed(() => [...blogStore.tagsColor.keys()].sort());
 
 onMounted(() => {
   dialog.value.showModal();
@@ -50,11 +51,24 @@ function onSubmit(evt) {
       dislikes: Number(form.get("dislikes")),
     },
   };
-  const newPost = {
+  let newPost;
+  if(post.value?.id){
+    newPost = {
     ...post.value,
     ...data,
   };
-  blogStore.updatePost(post.value.id, newPost);
+
+  }
+  else{
+    newPost = {
+    id: blogStore.getNewPostId(),
+    views:0,
+    ...data,
+  };
+
+  }
+
+  blogStore.updateCreatePost(newPost.id, newPost, route.params.tag);
   closeDialog();
 }
 </script>
@@ -73,20 +87,20 @@ function onSubmit(evt) {
               type="checkbox"
               name="tags"
               :value="tag"
-              :checked="post.tags.includes(tag)"
+              :checked="post?.tags.includes(tag)"
             />
             <small>{{ tag }}</small>
           </label>
         </fieldset>
         <label class="blog-edit-form_el"
           ><small>Title</small
-          ><input type="text" name="title" :value="post.title" required
+          ><input type="text" name="title" :value="post?.title" required
         /></label>
         <label class="blog-edit-form_el">
           <small>Body</small>
           <textarea
             name="body"
-            :value="post.body"
+            :value="post?.body"
             autocorrect="on"
             rows="10"
             required
@@ -95,7 +109,7 @@ function onSubmit(evt) {
         <fieldset class="reactions_wrapper">
           <legend><small>Reactions</small></legend>
           <label
-            v-for="[key, value] in Object.entries(post.reactions)"
+            v-for="[key, value] in Object.entries(post?.reactions ?? {likes:0, dislikes:0})"
             :key="key"
             class="reactions"
           >
@@ -130,14 +144,19 @@ fieldset {
   display: flex;
   flex-wrap: wrap;
   margin-top: 0.5rem;
+  gap:0.25rem;
   &.reactions_wrapper {
     gap: 1rem;
   }
   label {
     display: flex;
     align-content: center;
+    &:has(input:checked){
+      font-weight: 600;
+    }
     &.tag {
       gap: 0;
+
     }
     &.reactions {
       gap: 0.25rem;

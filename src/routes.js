@@ -72,6 +72,7 @@ export const routes = [
     name: "blog-route",
     children: [
       { path: "edit/:postId", name: "blog-edit-post", props:true, component: TheBlogEdit,  meta: { requireAuth: true, roles:['editor'] } },
+      { path: "add", name: "blog-add-post", component: TheBlogEdit,  meta: { requireAuth: true, roles:['editor'] } },
     ],
   },
 ];
