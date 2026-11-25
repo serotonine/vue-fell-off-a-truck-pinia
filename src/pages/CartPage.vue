@@ -3,7 +3,7 @@ import { onMounted, watch } from "vue";
 import { useRouter } from "vue-router";
 import { useCartStore, euroFormat } from "@/stores/cart.store";
 import { storeToRefs } from "pinia";
-import BaseCartItem from "./BaseCartItem.vue";
+import BaseCartItem from "@/components/cart/BaseCartItem.vue";
 const cart = useCartStore();
 const router = useRouter();
 const { total, nbProducts } = storeToRefs(useCartStore());

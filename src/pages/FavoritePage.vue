@@ -1,5 +1,5 @@
 <script setup>
-import Favorite from "@/components/product/Favorite.vue";
+import BaseFavorite from "@/components/product/BaseFavorite.vue";
 import { useFavoriteStore } from "@/stores/favorite.store";
 import { storeToRefs } from "pinia";
 import { onMounted, watch} from "vue";
@@ -26,10 +26,10 @@ watch(favorites, (current)=>{
   <h2>My Favorite products</h2>
   <p v-if="favorites.size === 0">No favorites yet.</p>
   <ul v-else class="reset">
-    <Favorite
+    <BaseFavorite
       v-for="favorite in favorites.values()"
       :key="favorite.id"
       :favorite="favorite"
-    ></Favorite>
+    ></BaseFavorite>
   </ul>
 </template>

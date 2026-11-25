@@ -2,12 +2,12 @@
 import { useAuthStore } from "./stores/auth.store";
 // Components.
 import ProductDetail from "@/components/product/ProductDetail.vue";
-import Products from "@/components/product/Products.vue";
-import Blog from "@/components/blog/TheBlog.vue";
-import TheBlogEdit from "@/components/blog/TheBlogEdit.vue";
-import TheCart from "@/components/cart/TheCart.vue";
+import ProductsPage from "@/pages/ProductsPage.vue";
+import BlogPage from "@/pages/BlogPage.vue";
+import BasePostUpdateCreate from "@/components/blog/BasePostUpdateCreate.vue";
+import CartPage from "@/pages/CartPage.vue";
 import BaseLogin from "@/components/auth/BaseLogin.vue";
-import Favorites from "@/components/product/Favorites.vue";
+import FavoritePage from "@/pages/FavoritePage.vue";
 
 // External function to redirect to login if not authentificated.
 function redirectAuth() {
@@ -25,7 +25,7 @@ export const routes = [
    **/
   {
     path: "/basket",
-    component: TheCart,
+    component: CartPage,
     name: "cart-route",
     meta: { requireAuth: true },
   },
@@ -52,7 +52,7 @@ export const routes = [
     path: "/products",
     alias: "/",
     children: [
-      { path: "", component: Products, name: "products-route" },
+      { path: "", component: ProductsPage, name: "products-route" },
       {
         path: "product/:productId(\\d+)",
         component: ProductDetail,
@@ -64,26 +64,26 @@ export const routes = [
 
   {
     path: "/favorites",
-    component: Favorites,
+    component: FavoritePage,
     name: "favorites-route",
     meta: { requireAuth: true },
   },
   {
     path: "/blog/:tag?",
-    component: Blog,
+    component: BlogPage,
     name: "blog-route",
     children: [
       {
         path: "edit/:postId",
         name: "blog-edit-post",
         props: true,
-        component: TheBlogEdit,
+        component: BasePostUpdateCreate,
         meta: { requireAuth: true, roles: ["editor"] },
       },
       {
         path: "add",
         name: "blog-add-post",
-        component: TheBlogEdit,
+        component: BasePostUpdateCreate,
         meta: { requireAuth: true, roles: ["editor"] },
       },
     ],

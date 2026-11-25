@@ -12,8 +12,8 @@ const {addProduct, isInCart} = cartStore;
 const props = defineProps({
   favorite: { type: Object, required: true },
 });
-onMounted(()=> console.log(isInCart));
-</script>
+/* onMounted(()=> console.log(isInCart));
+ */</script>
 
 <template>
   <li class="product_item">

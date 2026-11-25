@@ -2,11 +2,11 @@
 import { mapStores } from "pinia";
 import { useBlogStore } from "@/stores/blog.store.js";
 import { useAuthStore } from "@/stores/auth.store.js";
-import Post from "@/components/blog/Post.vue";
+import BasePost from "@/components/blog/BasePost.vue";
 import BaseLoader from "@/components/BaseLoader.vue";
 
 export default {
-  components: { Post, BaseLoader },
+  components: { BasePost, BaseLoader },
   data() {
     return {
       /*  store: useBlogStore(), */
@@ -38,7 +38,7 @@ export default {
 
 <template>
   <header class="blog_header">
-   
+
     <h2>
       <router-link :to="{name: 'blog-route', params:null}">Blog</router-link>
       <span v-if="tagParam"> / {{ tagParam }}</span>
@@ -58,12 +58,12 @@ export default {
       ></BaseLoader>
     </div>
     <section class="wrapper" v-if="blogStore.posts">
-      <Post
+      <BasePost
         v-for="post in blogStore.posts"
         :key="post.id"
         :post="post"
         class="post"
-      ></Post>
+      ></BasePost>
     </section>
   </div>
   <router-view></router-view>

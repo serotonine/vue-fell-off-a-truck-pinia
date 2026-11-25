@@ -57,7 +57,7 @@ export const useBlogStore = defineStore("blog", {
       return JSON.parse(sessionStorage.getItem("blogPosts"));
     },
     getNewPostId() {
-      let id = this.getSessionPosts().reduce(
+      let id = (this.getSessionPosts() ?? []).reduce(
         (acc, curr) => Math.max(acc, Number(curr.id)),
         0,
       );
