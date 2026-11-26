@@ -1,7 +1,7 @@
 // Stores.
 import { useAuthStore } from "./stores/auth.store";
 // Components.
-import ProductDetail from "@/components/product/ProductDetail.vue";
+import ProductDetailPage from "@/pages/ProductDetailPage.vue";
 import ProductsPage from "@/pages/ProductsPage.vue";
 import BlogPage from "@/pages/BlogPage.vue";
 import BasePostUpdateCreate from "@/components/blog/BasePostUpdateCreate.vue";
@@ -55,7 +55,7 @@ export const routes = [
       { path: "", component: ProductsPage, name: "products-route" },
       {
         path: "product/:productId(\\d+)",
-        component: ProductDetail,
+        component: ProductDetailPage,
         name: "product-detail",
         props: true,
       },

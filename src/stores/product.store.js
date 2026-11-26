@@ -36,7 +36,6 @@ export const useProductStore = defineStore("product", () => {
       const data = await response.json();
       products.value = getProducts(data?.products);
       setCategories(data?.products);
-      // console.log(categories.value);
     } catch (err) {
       error.value = err.message;
     } finally {
@@ -50,7 +49,10 @@ export const useProductDetailStore = defineStore("productDetail", () => {
   const error = ref(null);
   const isLoading = ref(false);
   const product = ref(null);
+
   const loadProductDetail = async (productId) => {
+    // Reset product to avoid space sync whith the product image.
+    product.value = null;
     isLoading.value = true;
     error.value = null;
     try {
@@ -59,7 +61,6 @@ export const useProductDetailStore = defineStore("productDetail", () => {
         throw new Error(response.status);
       }
       const data = await response.json();
-      // console.log("data", data);
       product.value = data;
     } catch (err) {
       error.value = err.message;

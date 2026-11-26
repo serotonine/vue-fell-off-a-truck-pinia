@@ -27,68 +27,101 @@ function addProduct(e) {
 </script>
 
 <template>
-    <h2>Products</h2>
-
-  <base-loader :error="error" :is-loading="isLoading" />
-  <section v-if="product" class="product-detail">
-    <article class="product-detail_thumbnail">
-      <figure class="product_thumb">
-        <img :src="product.images[0]" :alt="product.title" />
-      </figure>
-    </article>
-    <aside class="product-detail_infos">
-      <header>
-        <h2 class="product-detail_name">{{ product.title }}</h2>
-        <h5 class="product-detail_brand">
-          <i>{{ product.brand }}</i>
-        </h5>
-      </header>
-      <section>
-        <p>{{ product.description }}</p>
-        <h3>{{ euroFormat.format(product.price) }}</h3>
+  <div class="product-detail-page">
+    <div class="loader">
+      <base-loader :error="error" :is-loading="isLoading" />
+    </div>
+    <h2 class="product-detail-page_title">Product / {{ product?.category }}</h2>
+    <transition name="productmounted" appear>
+      <section v-if="product" class="product-detail" :key="product.id">
+        <article class="product-detail_thumbnail">
+          <figure class="product_thumb">
+            <img :src="product.images[0]" :alt="product.title" />
+          </figure>
+        </article>
+        <aside class="product-detail_infos">
+          <header>
+            <h2 class="product-detail_name">{{ product.title }}</h2>
+            <h3 class="product-detail_brand">
+              <i>{{ product.brand }}</i>
+            </h3>
+          </header>
+          <section>
+            <p>{{ product.description }}</p>
+            <h3>{{ euroFormat.format(product.price) }}</h3>
+          </section>
+          <footer>
+            <button class="btn btn-cta" @click="addProduct($event)">
+              Add to cart
+            </button>
+            <output>
+              <transition name="productadded">
+                <small v-if="productAdded"
+                  >{{ product.title }} added in basket</small
+                >
+              </transition>
+            </output>
+          </footer>
+        </aside>
       </section>
-      <footer>
-        <button class="btn btn-cta" @click="addProduct($event)">
-          Add to cart
-        </button>
-        <output>
-          <transition name="productadded">
-            <small v-if="productAdded"
-              >{{ product.title }} added in basket</small
-            >
-          </transition>
-        </output>
-      </footer>
-    </aside>
-  </section>
+    </transition>
+  </div>
 </template>
 
 <style scoped>
 .product-detail {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: auto;
-  gap: 2em;
+  flex: 1;
+  min-height: 0;
+
+  @media (min-width: 640px) {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+  }
   .product-detail_thumbnail {
-    grid-column: 1/8;
-    background-color: white;
+    flex: 1;
+    /* default: auto */
+    min-height: 0;
+    max-width: 100vw;
+    @media (min-width: 480px) {
+      max-width: 70vw;
+    }
+
+    @media (min-width: 640px) {
+      min-width: 50%;
+    }
+    @media (min-width: 992px) {
+      max-width: 60%;
+    }
+    @media (min-width: 1024px) {
+      max-width: 60%;
+    }
+  }
+  figure.product_thumb {
+    margin-inline: 0;
+    height: 100%;
+    overflow: hidden;
+    img {
+      object-fit: contain;
+    }
   }
   .product-detail_infos {
-    grid-column: 8/13;
     border-left: 1px solid darkslategray;
-    padding-left: 2em;
+    padding: 2em 0 2em 2em;
     background-color: white;
+    align-self: center;
   }
-  .product-detail_name{
-    margin-bottom:0.5em;
+  .product-detail_name {
+    margin-top: 0;
+    margin-bottom: 0.25em;
   }
-  .product-detail_brand{
-    margin-top:0;
+  .product-detail_brand {
+    margin-top: 0;
+    font-weight: 500;
   }
   output {
-    display: block;
-    margin-top: 0.25em;
-    font-size: x-small;
+    padding-left: 0.25em;
+    font-size: small;
   }
   .productadded-enter-active,
   .productadded-leave-active {
@@ -102,7 +135,17 @@ function addProduct(e) {
     opacity: 0;
     transform: translateY(-4px);
   }
+ 
 }
+ .productmounted-enter-active,
+  .productmounted-leave-active {
+    transition: opacity 0.3s ease-out 0.3s;
+  }
+
+  .productmounted-enter-from,
+  .productmounted-leave-to {
+    opacity: 0;
+  }
 </style>
 
 /* availabilityStatus : "In Stock" category : "groceries" description : "Creamy

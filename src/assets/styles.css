@@ -17,6 +17,7 @@
 body {
   font-family: 'Inter', sans-serif;
   color: var(--color-body);
+  margin:0;
 }
 
 h1 {
@@ -48,15 +49,35 @@ a {
   padding-inline: 2em;
   max-width: 1200px;
 
-/* @media (min-width: 640px)  { max-width: 600px; }
+  &:has(.product-detail-page) {
+    display: flex;
+    flex-direction: column;
+    @media (min-width: 640px)  { height: 100dvh; }
+   
+  }
+
+  /* @media (min-width: 640px)  { max-width: 600px; }
 @media (min-width: 992px) { max-width: 960x; }
 @media (min-width: 1024px) { max-width: 1024px; }
 */
-@media (min-width: 1400px) { max-width: 1400px; } 
+  @media (min-width: 1400px) {
+    max-width: 1400px;
+  }
+
 }
 
 main {
   position: relative;
+
+  /* Hack to have the product thumbnail fullscreen. */
+  &:has(.product-detail-page) {
+    flex: 1;
+    /* default:auto */
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+
+  }
 }
 
 /* Utilities */
@@ -89,7 +110,7 @@ main {
 }
 
 .btn {
-  display:inline-block;
+  display: inline-block;
   border-radius: 5px;
   padding: 0.25em 0.5em;
   border-width: 1px;
@@ -150,4 +171,8 @@ main {
 ul.reset {
   margin: 0;
   padding: 0;
+}
+/* Animations */
+@keyframes turn {
+  to { rotate: 360deg; }
 }
