@@ -19,12 +19,12 @@ onMounted(() => {
 </script>
 
 <template>
-
   <section class="wrapper_content">
-    <div class="loader"><base-loader :error="error" :is-loading="isLoading" /></div>
-
-    <div class="header">
-       <h2>Products</h2>
+    <div class="loader">
+      <base-loader :error="error" :is-loading="isLoading" />
+    </div>
+    <div class="products_header">
+      <h2>Products</h2>
       <ProductsByCategory v-if="products?.length"></ProductsByCategory>
     </div>
     <transition name="product" appear>
@@ -40,12 +40,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.header{
-  display:flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .product-enter-active,
 .product-leave-active {
   transition: opacity 0.5s ease-out;
@@ -54,10 +48,13 @@ onMounted(() => {
 .product-enter-from,
 .product-leave-to {
   opacity: 0;
-
 }
-@keyframes turn{
-  0%{transform: rotate(0deg);}
-  100%{transform: rotate(360deg);}
+@keyframes turn {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>

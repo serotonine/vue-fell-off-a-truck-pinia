@@ -18,14 +18,14 @@ const logout = () => {
 </script>
 
 <template>
-  <header class="header">
+  <header class="main-header">
     <div class="page_title">
       <h1>Fell off a truck</h1>
       <h3 v-if="auth.user" class="page_auth">
         <span></span><span>{{ capitalize(auth.user?.role) }}</span>
       </h3>
     </div>
-    <menu aria-label="menu">
+    <menu aria-label="menu" class="main-menu">
       <li>
         <router-link :to="{ name: 'products-route' }">Products</router-link>
       </li>
@@ -69,30 +69,14 @@ const logout = () => {
 </template>
 
 <style scoped>
-.page_title {
-  position: relative;
-  .page_auth {
-    display:flex;
-    align-items: center;
-    gap:0.25em;
-    font-weight: 300;
-    position: absolute;
-    bottom: -1em;
-    span {
-      display: inline-block;
-      &:first-of-type {
-        width: 0.75rem;
-        height: 0.75rem;
-        background-color: gold;
-        border-radius: 50%;
-      }
-    }
-  }
-}
-.header {
+.main-header {
   display: flex;
+  flex-direction: column;
   align-items: baseline;
   margin-bottom: 2em;
+  @media screen and (min-width: 820px) {
+    flex-direction: row;
+  }
   .router-link-active {
     font-weight: 600;
   }
@@ -100,6 +84,56 @@ const logout = () => {
     list-style-type: none;
   }
 }
+.page_title {
+  position: relative;
+  .page_auth {
+    display: flex;
+    align-items: center;
+    gap: 0.25em;
+    font-weight: 300;
+    position: absolute;
+
+    bottom: -0.5em;
+    @media screen and (max-width: 819px) {
+      font-size: 1em;
+    }
+    @media screen and (min-width: 820px) {
+      bottom: -1em;
+    }
+    span {
+      display: inline-block;
+      &:first-of-type {
+        width: 0.5rem;
+        height: 0.5rem;
+        background-color: gold;
+        border-radius: 50%;
+        @media screen and (min-width: 820px) {
+          width: 0.75rem;
+          height: 0.75rem;
+        }
+      }
+    }
+  }
+}
+.main-menu {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin: 0;
+  padding-block: 1em;
+  padding-inline: 0;
+  border-block: 1px solid var(--color-base);
+  width: 100%;
+
+  @media screen and (min-width: 820px) {
+    justify-content: end;
+    flex-grow: 1;
+    padding: 0;
+    border: none;
+    width: auto;
+  }
+}
+/* Links items */
 .link_cart {
   position: relative;
   .link_cart_qty {

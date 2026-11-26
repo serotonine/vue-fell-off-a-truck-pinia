@@ -44,15 +44,15 @@ a {
 }
 
 #app {
-  padding: 0 2em;
-}
+  margin-inline: auto;
+  padding-inline: 2em;
+  max-width: 1200px;
 
-menu {
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  gap: 1em;
-  flex-grow: 1;
+/* @media (min-width: 640px)  { max-width: 600px; }
+@media (min-width: 992px) { max-width: 960x; }
+@media (min-width: 1024px) { max-width: 1024px; }
+*/
+@media (min-width: 1400px) { max-width: 1400px; } 
 }
 
 main {
