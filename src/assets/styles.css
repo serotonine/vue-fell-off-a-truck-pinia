@@ -17,7 +17,7 @@
 body {
   font-family: 'Inter', sans-serif;
   color: var(--color-body);
-  margin:0;
+  margin: 0;
 }
 
 h1 {
@@ -52,8 +52,11 @@ a {
   &:has(.product-detail-page) {
     display: flex;
     flex-direction: column;
-    @media (min-width: 640px)  { height: 100dvh; }
-   
+
+    @media (min-width: 640px) {
+      height: 100dvh;
+    }
+
   }
 
   /* @media (min-width: 640px)  { max-width: 600px; }
@@ -76,7 +79,6 @@ main {
     min-height: 0;
     display: flex;
     flex-direction: column;
-
   }
 }
 
@@ -143,6 +145,20 @@ main {
 
     }
   }
+  &.btn-add-to-cart {
+    border-color: orange;
+    background-color: color-mix(in srgb, orange 80%, transparent 20%);
+    padding:0.5rem 1rem;
+    color:var(--color-base);
+    font-weight: 800;
+
+    &:hover,
+    &:focus {
+      border-color: orange;
+      background-color: orange;
+
+    }
+  }
 
   &.btn-reset {
     border: none;
@@ -172,7 +188,10 @@ ul.reset {
   margin: 0;
   padding: 0;
 }
+
 /* Animations */
 @keyframes turn {
-  to { rotate: 360deg; }
+  to {
+    rotate: 360deg;
+  }
 }

@@ -4,6 +4,7 @@ import { storeToRefs } from "pinia";
 import { useProductDetailStore } from "@/stores/product.store";
 import { useCartStore, euroFormat } from "@/stores/cart.store";
 import BaseLoader from "@/components/BaseLoader.vue";
+import FavoriteBtn from "@/components/buttons/BaseToggleFavoriteBtn.vue";
 
 const props = defineProps({ productId: String });
 const store = useProductDetailStore();
@@ -50,17 +51,23 @@ function addProduct(e) {
             <p>{{ product.description }}</p>
             <h3>{{ euroFormat.format(product.price) }}</h3>
           </section>
-          <footer>
-            <button class="btn btn-cta" @click="addProduct($event)">
-              Add to cart
-            </button>
-            <output>
-              <transition name="productadded">
-                <small v-if="productAdded"
-                  >{{ product.title }} added in basket</small
-                >
-              </transition>
-            </output>
+          <footer class="product-cta">
+        <div>
+              <button class="btn btn-add-to-cart" @click="addProduct($event)">
+                
+                Add to cart
+              </button>
+              <output>
+                <transition name="productadded">
+                  <small v-if="productAdded"
+                    >{{ product.title }} added in basket</small
+                  >
+                </transition>
+                
+              </output>
+        </div>
+        <favorite-btn :product="product" :size="24"></favorite-btn>
+
           </footer>
         </aside>
       </section>
@@ -69,6 +76,12 @@ function addProduct(e) {
 </template>
 
 <style scoped>
+.product-detail-page{
+   flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
 .product-detail {
   flex: 1;
   min-height: 0;
@@ -97,19 +110,23 @@ function addProduct(e) {
       max-width: 60%;
     }
   }
-  figure.product_thumb {
+  .product_thumb {
     margin-inline: 0;
     height: 100%;
-    overflow: hidden;
     img {
+      width: 100%;
+      height: 100%;
       object-fit: contain;
     }
   }
   .product-detail_infos {
-    border-left: 1px solid darkslategray;
-    padding: 2em 0 2em 2em;
+   
     background-color: white;
-    align-self: center;
+     @media (min-width: 640px) {
+      align-self: center;
+      border-left: 1px solid darkslategray;
+    padding: 2em 0 2em 2em;
+    }
   }
   .product-detail_name {
     margin-top: 0;
@@ -119,7 +136,12 @@ function addProduct(e) {
     margin-top: 0;
     font-weight: 500;
   }
+  .product-cta{
+    display: flex;
+    justify-content: space-between;
+  }
   output {
+    display:block;
     padding-left: 0.25em;
     font-size: small;
   }
@@ -135,17 +157,16 @@ function addProduct(e) {
     opacity: 0;
     transform: translateY(-4px);
   }
- 
 }
- .productmounted-enter-active,
-  .productmounted-leave-active {
-    transition: opacity 0.3s ease-out 0.3s;
-  }
+.productmounted-enter-active,
+.productmounted-leave-active {
+  transition: opacity 0.3s ease-out 0.3s;
+}
 
-  .productmounted-enter-from,
-  .productmounted-leave-to {
-    opacity: 0;
-  }
+.productmounted-enter-from,
+.productmounted-leave-to {
+  opacity: 0;
+}
 </style>
 
 /* availabilityStatus : "In Stock" category : "groceries" description : "Creamy

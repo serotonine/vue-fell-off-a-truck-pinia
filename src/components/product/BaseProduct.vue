@@ -1,10 +1,7 @@
 <script setup>
-import { useFavoriteStore } from "@/stores/favorite.store";
-import { Heart } from "@lucide/vue";
+import FavoriteBtn from "@/components/buttons/BaseToggleFavoriteBtn.vue";
 import { euroFormat } from "@/stores/cart.store";
 const props = defineProps({ product: { type: Object, required: true } });
-const favoriteStore = useFavoriteStore();
-const {toggleFavorite, isFavorite} = favoriteStore;
 </script>
 
 <template>
@@ -20,9 +17,7 @@ const {toggleFavorite, isFavorite} = favoriteStore;
       >
       <div class="product_price flex">
         <p>{{ euroFormat.format(product.price) }}</p>
-        <button class="btn-favorite" @click.prevent="toggleFavorite(product)">
-          <Heart :size="20" :color="isFavorite(product) ? 'deeppink': 'dimgray'" :fill="isFavorite(product) ? 'deeppink': 'white'"></Heart>
-        </button>
+        <favorite-btn :product="product" :size="20"></favorite-btn>
       </div>
     </div>
   </article>
