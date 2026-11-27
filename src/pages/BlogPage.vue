@@ -27,7 +27,6 @@ export default {
   watch: {
     tagParam: {
       handler() {
-        console.log(this.blogStore.getNewPostId());
         this.blogStore.getPosts({ sortBy: "id", order: "desc" }, this.tagParam);
       },
       immediate: true,

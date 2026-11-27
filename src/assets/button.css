@@ -1,0 +1,62 @@
+.btn {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 0.25em 0.5em;
+  border-width: 1px;
+  border-style: solid;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+
+  &.btn-tag {
+    border-color: orange;
+    background-color: orange;
+
+    &:hover,
+    &:focus {
+      border-color: darkorange;
+      background-color: darkorange;
+
+    }
+  }
+
+  &.btn-cta {
+    border-color: var(--color-cta);
+    background-color: var(--color-cta);
+
+    &:hover,
+    &:focus {
+      border-color: var(--color-cta-dark);
+      background-color: var(--color-cta-dark);
+    }
+  }
+
+  &.btn-add-to-cart {
+    border-color: orange;
+    background-color: color-mix(in srgb, orange 80%, transparent 20%);
+    padding: 0.5rem 1rem;
+    color: var(--color-base);
+    font-weight: 800;
+
+    &:hover,
+    &:focus {
+      border-color: orange;
+      background-color: orange;
+    }
+  }
+
+  &.btn-reset {
+    border: none;
+    color: var(--color-body);
+    padding: 0;
+    background-color: transparent;
+    font-family: 'Inter', sans-serif;
+    font-size: 1em;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
